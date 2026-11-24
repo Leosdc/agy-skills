@@ -1,0 +1,14 @@
+{
+  "name": "agy-skills-pt-br",
+  "description": "Esteira completa de Spec-Driven Development, governança GitHub Flow e auditoria de segurança para Google Antigravity (8 skills + regras + templates em Português do Brasil).",
+  "version": "1.0.0",
+  "author": {
+    "name": "Leonardo da Cruz (@Leosdc)",
+    "url": "https://github.com/Leosdc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Leosdc/agy-skills"
+  },
+  "homepage": "https://github.com/Leosdc/agy-skills/blob/main/README.pt-BR.md"
+}

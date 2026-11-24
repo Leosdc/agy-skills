@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "project": "<Nome do Projeto>",
+  "version": "0.1.0",
+  "updatedAt": "2026-01-01",
+  "domains": {
+    "modules": {
+      "description": "Módulos principais e funcionalidades voltadas ao usuário",
+      "path": "src/modules",
+      "items": [
+        {
+          "id": "modulo-exemplo",
+          "name": "Módulo Principal de Exemplo",
+          "status": "🟢 prod-active",
+          "entry": "src/modules/exemplo/index.ts",
+          "spec": "specs/modulo-exemplo.SPEC.md"
+        }
+      ]
+    },
+    "services": {
+      "description": "APIs de backend, workers e integrações externas",
+      "path": "src/services",
+      "items": []
+    },
+    "data": {
+      "description": "Schemas de banco de dados, migrações e regras de segurança",
+      "path": "src/db",
+      "items": []
+    }
+  }
+}

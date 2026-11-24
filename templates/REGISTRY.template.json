@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "project": "<Project Name>",
+  "version": "0.1.0",
+  "updatedAt": "2026-01-01",
+  "domains": {
+    "modules": {
+      "description": "Core application modules and user-facing features",
+      "path": "src/modules",
+      "items": [
+        {
+          "id": "example-module",
+          "name": "Example Core Module",
+          "status": "🟢 prod-active",
+          "entry": "src/modules/example/index.ts",
+          "spec": "specs/example-module.SPEC.md"
+        }
+      ]
+    },
+    "services": {
+      "description": "Backend APIs, workers, and integrations",
+      "path": "src/services",
+      "items": []
+    },
+    "data": {
+      "description": "Database schemas, migrations, and security rules",
+      "path": "src/db",
+      "items": []
+    }
+  }
+}
