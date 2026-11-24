@@ -60,19 +60,21 @@ flowchart LR
 Choose the setup that best fits your workflow:
 
 ### Option 1 — Install Globally as a Native Antigravity Plugin (Recommended)
-Works automatically across **all** your projects with zero duplication.
+Works automatically across **all** your projects with zero duplication via the official `agy plugin install` CLI:
 
 **English (auto-adapts responses to your conversation or `AGENTS.md` language):**
 ```bash
-git clone https://github.com/Leosdc/agy-skills.git ~/.gemini/config/plugins/agy-skills
+git clone https://github.com/Leosdc/agy-skills.git
+agy plugin install ./agy-skills
 ```
 
 **Português do Brasil (plugin nativo 100% em PT-BR):**
 ```bash
-git clone https://github.com/Leosdc/agy-skills.git /tmp/agy-skills
-cp -r /tmp/agy-skills/locales/pt-BR ~/.gemini/config/plugins/agy-skills-pt-br
+git clone https://github.com/Leosdc/agy-skills.git
+agy plugin install ./agy-skills/locales/pt-BR
 ```
-*(On Windows PowerShell, replace `~/.gemini/config/plugins/` with `$HOME\.gemini\config\plugins\`.)*
+
+*(You can verify any plugin locally anytime with `agy plugin validate ./agy-skills --strict` and inspect active plugins with `agy plugin list`.)*
 
 ### Option 2 — Install Inside a Specific Repository (`.agents/`)
 Ideal for sharing identical rules and skills with your entire team via Git:

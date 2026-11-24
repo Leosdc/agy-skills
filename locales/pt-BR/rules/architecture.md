@@ -1,3 +1,10 @@
+---
+trigger: model_decision
+description: >-
+  Aplicar ao estruturar módulos, escrever ou refatorar código, construir
+  componentes de UI/temas ou executar validações de build e testes.
+---
+
 # Arquitetura e Padrões de Código
 
 1. **Modularidade e Fronteiras Claras**:

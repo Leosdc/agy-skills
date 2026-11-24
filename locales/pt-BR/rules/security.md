@@ -1,3 +1,10 @@
+---
+trigger: always_on
+description: >-
+  Regras inegociáveis de segurança e privacidade cobrindo blindagem de segredos,
+  prevenção contra XSS/injeção, autenticação/autorização e conformidade LGPD.
+---
+
 # Regras Obrigatórias de Segurança & Privacidade (LGPD / GDPR)
 
 1. **Blindagem de Segredos e Credenciais**:

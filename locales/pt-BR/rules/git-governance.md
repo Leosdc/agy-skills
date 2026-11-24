@@ -1,3 +1,10 @@
+---
+trigger: model_decision
+description: >-
+  Aplicar ao criar branches, executar rebase, escrever Conventional Commits,
+  abrir Pull Requests, gerenciar releases ou usar a GitHub CLI (gh).
+---
+
 # Governança Git & GitHub Flow
 
 1. **Duas Branches Permanentes (Padrão Configurável)**:

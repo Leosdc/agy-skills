@@ -1,3 +1,10 @@
+---
+trigger: always_on
+description: >-
+  Non-negotiable security and privacy rules covering secrets hygiene, XSS and
+  injection prevention, authentication/authorization, and LGPD/GDPR compliance.
+---
+
 # Mandatory Security & Privacy Rules
 
 1. **Secrets & Credentials Protection**:

@@ -1,3 +1,10 @@
+---
+trigger: model_decision
+description: >-
+  Apply when designing modules, writing or refactoring code, implementing UI
+  components or themes, or running project build and test validations.
+---
+
 # Architecture & Code Quality Standards
 
 1. **Modularity & Clear Boundaries**:

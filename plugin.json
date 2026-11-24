@@ -2,6 +2,7 @@
   "name": "agy-skills",
   "description": "Spec-Driven Development workflow, GitHub Flow governance, and security guardrails for Google Antigravity (8 skills + rules + templates, EN & PT-BR).",
   "version": "1.0.0",
+  "logo": "assets/logo.svg",
   "author": {
     "name": "Leonardo da Cruz (@Leosdc)",
     "url": "https://github.com/Leosdc"
