@@ -27,7 +27,8 @@ Tipos aceitos (adapte à arquitetura declarada no `AGENTS.md` ou `docs/REGISTRY.
 Todo e qualquer documento de especificação gerado **DEVE OBRIGATORIAMENTE** ser salvo no diretório canônico:
 👉 **`specs/<nome>.SPEC.md`**
 
-> **ATENÇÃO:** NUNCA salve arquivos `SPEC.md` soltos na raiz do projeto ou isolados em subpastas sem que a especificação principal esteja versionada em `specs/`. A pasta `specs/` é o inventário unificado e *Source of Truth* das especificações de engenharia.
+> **ATENÇÃO:** NUNCA salve arquivos `SPEC.md` soltos na raiz do projeto ou isolados em subpastas sem que a especificação principal esteja em `specs/`. A pasta `specs/` é o inventário unificado e *Source of Truth* das especificações de engenharia.
+> **Repositórios Públicos:** Verifique `gh repo view --json isPrivate,visibility` (ou `repoVisibility` em `.session.json`). Se o repositório for **público** (ou visibilidade indeterminada), `specs/` e `docs/REGISTRY.json` devem ser adicionados ao `.gitignore` e mantidos **exclusivamente locais** (nunca commitados no Git remoto, salvo opt-in explícito no `AGENTS.md` da raiz).
 
 ---
 

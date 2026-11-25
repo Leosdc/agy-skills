@@ -76,3 +76,14 @@ Conventional Commits estrito com escopo:
 2. **Prevenção contra XSS & Injeção**: Nunca escreva dados de usuários, banco ou IA em sinks HTML brutos (`innerHTML`, `dangerouslySetInnerHTML`) sem sanitização estrita (`DOMPurify.sanitize()`) ou `.textContent`. Use queries parametrizadas.
 3. **Controle de Acesso (AuthN / AuthZ)**: Valide autenticação e posse/RBAC no servidor ou nas regras do banco em toda operação protegida.
 4. **Minimização de Dados (LGPD / GDPR)**: Colete e exponha apenas o estritamente necessário; nunca vaze UIDs internos, tokens ou dados sensíveis em logs públicos ou DOM.
+
+---
+
+## Política de Visibilidade do Repositório (Privado vs. Público)
+Antes de criar ou commitar artefatos de governança SDD (`specs/`, `specs/checkpoints/*.PLAN.md` e `docs/REGISTRY.json`), verifique a visibilidade do repositório via `gh repo view --json isPrivate,visibility` (persistindo `"repoVisibility": "private" | "public"` em `.session.json`).
+
+- **Repositório Privado (`isPrivate: true`)**: Fluxo padrão completo — `specs/`, `specs/checkpoints/` e `docs/REGISTRY.json` são versionados normalmente no Git.
+- **Repositório Público (`isPrivate: false`) ou Visibilidade Indeterminada (*fail-safe*)**:
+  - `specs/`, `specs/checkpoints/` e `docs/REGISTRY.json` operam **exclusivamente em modo local (`gitignored`)** para guiar `/scaffold`, `/craft`, `/checkpoint` e `/matrix`.
+  - É **PROIBIDO** commitar ou enviar `specs/`, `specs/checkpoints/` ou `docs/REGISTRY.json` para repositórios públicos (salvo declaração explícita de opt-in no `AGENTS.md` da raiz do projeto).
+  - `/ignite` e `/scaffold` devem garantir essas entradas no `.gitignore`; `/shield` e `/checkpoint` devem bloquear o commit caso qualquer um desses caminhos esteja rastreado ou staged.

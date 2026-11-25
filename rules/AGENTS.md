@@ -76,3 +76,14 @@ Use strict Conventional Commits with scope:
 2. **Injection & XSS Prevention**: Never render untrusted user/AI input via raw HTML sinks (`innerHTML`, `dangerouslySetInnerHTML`, unescaped templates) without strict sanitization (`DOMPurify` / framework escaping) or `.textContent`. Use parameterized queries for databases.
 3. **Access Control (AuthN / AuthZ)**: Enforce authentication and resource ownership / RBAC checks server-side (or via database security rules) on every protected mutation and read.
 4. **Data Minimization (LGPD / GDPR)**: Collect and expose only the minimum data strictly required; never leak internal UIDs, secrets, or PII in client logs, UI dumps, or telemetry.
+
+---
+
+## Repository Visibility Policy (Private vs. Public)
+Before creating or committing SDD governance artifacts (`specs/`, `specs/checkpoints/*.PLAN.md`, and `docs/REGISTRY.json`), check the repository visibility via `gh repo view --json isPrivate,visibility` (persisting `"repoVisibility": "private" | "public"` in `.session.json`).
+
+- **Private Repository (`isPrivate: true`)**: Standard full workflow — `specs/`, `specs/checkpoints/`, and `docs/REGISTRY.json` are versioned normally in Git.
+- **Public Repository (`isPrivate: false`) or Unknown Visibility (*fail-safe*)**:
+  - `specs/`, `specs/checkpoints/`, and `docs/REGISTRY.json` operate **strictly in local-only mode (`gitignored`)** to guide `/scaffold`, `/craft`, `/checkpoint`, and `/matrix`.
+  - Committing or pushing `specs/`, `specs/checkpoints/`, or `docs/REGISTRY.json` to public repositories is **FORBIDDEN** (unless explicitly opted in via the project's root `AGENTS.md`).
+  - `/ignite` and `/scaffold` must ensure these entries exist in `.gitignore`; `/shield` and `/checkpoint` must block commits if any of these paths are tracked or staged.

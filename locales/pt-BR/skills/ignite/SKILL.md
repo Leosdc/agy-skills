@@ -24,12 +24,14 @@ Inspecione a raiz do repositório e detecte automaticamente a stack do projeto (
    - Valide versões mínimas dos runtimes (Node.js, Python, Go, Rust, Java etc.) e a integridade do lockfile.
 3. **Variáveis de Ambiente:**
    - Verifique se existe `.env.example` e se o arquivo local (`.env` / `.env.development`) já foi provisionado.
-4. **Git & GitHub CLI:**
+4. **Git, GitHub CLI & Visibilidade do Repositório:**
    - Verifique `git status --short`, remoto ativo (`git remote -v`) e autenticação na GitHub CLI (`gh auth status`).
+   - Detecte a visibilidade do repositório com `gh repo view --json isPrivate,visibility` (tratando falha/offline como `public` por *fail-safe*).
 5. **Higiene de Sessão & `.gitignore`:**
-   - Confirme que `.gitignore` ignora `.session.json`, `.env` e arquivos locais de segredos.
-   - Verifique se `.session.json` existe; caso não exista, planeje inicializá-lo com `{"developer": "<usuario-git>", "activeModule": null, "startedAt": "<data-iso>"}`.
-   - Verifique se `docs/REGISTRY.json` e `specs/` existem; informe se podem ser inicializados.
+   - Confirme que `.gitignore` ignora `.session.json`, `.env`, `.env.*` e arquivos locais de segredos.
+   - **Se o repositório for público (`public`)**: garanta que `specs/` e `docs/REGISTRY.json` também estejam listados no `.gitignore` (modo local-only, sem versionamento público).
+   - Verifique se `.session.json` existe; caso não exista, planeje inicializá-lo com `{"developer": "<usuario-git>", "activeModule": null, "repoVisibility": "<private|public>", "startedAt": "<data-iso>"}`.
+   - Verifique se `docs/REGISTRY.json` e `specs/` existem; informe se podem ser inicializados (versionados em repo privado; apenas locais em repo público).
 
 Apresente todos os itens claramente como `[OK]`, `[AVISO]` ou `[FALHA]`.
 

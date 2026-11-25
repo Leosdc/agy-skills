@@ -24,12 +24,14 @@ Inspect the repository root and detect the active stack automatically (e.g., `pa
    - Verify required runtime versions (Node.js, Python, Go, Rust, Java, etc.) and lockfile presence.
 3. **Environment File Check:**
    - Check whether `.env.example` exists and whether local `.env` / `.env.development` is provisioned.
-4. **Git & GitHub CLI Check:**
+4. **Git, GitHub CLI & Repository Visibility Check:**
    - Verify `git status --short`, active remote (`git remote -v`), and GitHub CLI authentication (`gh auth status`).
+   - Detect repository visibility via `gh repo view --json isPrivate,visibility` (treating failure/offline as `public` as a *fail-safe*).
 5. **Session & Ignore Hygiene:**
-   - Verify `.gitignore` excludes `.session.json`, `.env`, and local secret files.
-   - Check whether `.session.json` exists; if missing, plan to initialize it with `{"developer": "<git-user>", "activeModule": null, "startedAt": "<iso-date>"}`.
-   - Check whether `docs/REGISTRY.json` and `specs/` exist; note if they can be initialized.
+   - Verify `.gitignore` excludes `.session.json`, `.env`, `.env.*`, and local secret files.
+   - **If the repository is public (`public`)**: ensure `specs/` and `docs/REGISTRY.json` are also listed in `.gitignore` (local-only mode, never publicly versioned).
+   - Check whether `.session.json` exists; if missing, plan to initialize it with `{"developer": "<git-user>", "activeModule": null, "repoVisibility": "<private|public>", "startedAt": "<iso-date>"}`.
+   - Check whether `docs/REGISTRY.json` and `specs/` exist; note if they can be initialized (versioned in private repos; local-only in public repos).
 
 Report all findings clearly as `[PASS]`, `[WARN]`, or `[FAIL]`.
 

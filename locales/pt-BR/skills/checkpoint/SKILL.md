@@ -18,8 +18,9 @@ Fecha com segurança o progresso no módulo ativo seguindo rigorosamente o padr�
 ### 1. Plan (Read-Only & Geração do Plano em Markdown)
 1. Identifique `activeModule` e `developer` em `.session.json`.
 2. Verifique o estado do Git (`git status --short`, `git diff --stat`, branch atual).
-3. **Pré-voo Anti-Fuga (Auditoria de Segurança):**
+3. **Pré-voo Anti-Fuga (Auditoria de Segurança & Visibilidade):**
    - Varra arquivos modificados e novos em busca de segredos acidentais (`API_KEY`, chaves privadas, tokens, senhas). Se encontrar, **ABORTE IMEDIATAMENTE**.
+   - Verifique a visibilidade do repositório (`gh repo view --json isPrivate,visibility` ou `.session.json`). Se for **público** (ou indeterminado, salvo opt-in no `AGENTS.md`), confirme que `specs/`, `specs/checkpoints/` e `docs/REGISTRY.json` estão no `.gitignore` e **EXCLUA-OS** dos commits atômicos (mantendo o plano `.PLAN.md` apenas localmente).
    - Se houver alterações em arquivos sensíveis (auth, servidor/API, CSP/headers, regras de banco) e `/shield` ainda não tiver sido executado nesta sessão, pause e apresente `ask_question`:
      - `(Recommended) Executar /shield primeiro para auditoria estrita de segurança e conformidade`
      - `Prosseguir diretamente com o plano do /checkpoint`
@@ -50,7 +51,7 @@ Solicite aprovação explícita do desenvolvedor via `ask_question`:
    git rebase --autostash origin/dev
    ```
 2. Crie a Issue no GitHub (se ainda não existir) e publique o comentário técnico com `gh issue comment` via `--body-file` (UTF-8 sem BOM).
-3. Crie os commits atômicos aprovados (incluindo `specs/checkpoints/YYYYMMDD_<activeModule>.PLAN.md` na fatia documental).
+3. Crie os commits atômicos aprovados (incluindo `specs/checkpoints/YYYYMMDD_<activeModule>.PLAN.md` na fatia documental **somente em repositórios privados**; em repositórios públicos, mantenha `specs/` e `docs/REGISTRY.json` exclusivamente locais no `.gitignore`).
 4. Envie a branch para o remoto:
    ```bash
    git push -u origin HEAD
