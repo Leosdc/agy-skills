@@ -17,10 +17,11 @@ Aplica as leis inegociáveis de segurança e privacidade sobre toda alteração 
 
 Inspecione `git status --short` e `git diff` em todos os arquivos modificados e novos:
 
-1. **Lei 1 — Blindagem de Segredos e Credenciais:**
+1. **Lei 1 — Blindagem de Segredos, Credenciais & Visibilidade de Repositório:**
    - Varra o diff procurando chaves de API, senhas, chaves privadas, JWTs, segredos OAuth ou strings de conexão hardcoded.
    - Confirme que segredos privados de backend NUNCA vazam para bundles cliente ou prefixos públicos (`VITE_*`, `NEXT_PUBLIC_*`, `REACT_APP_*`).
    - Valide via `git check-ignore` que `.session.json`, `.env` e `.env.*` (exceto `.env.example`) estão ignorados no `.gitignore`.
+   - **Guarda de Repositório Público:** Verifique `gh repo view --json isPrivate,visibility` (ou `.session.json`). Se o repositório for **público** (ou visibilidade indeterminada, salvo opt-in no `AGENTS.md`), confirme via `git check-ignore` que `specs/` e `docs/REGISTRY.json` estão ignorados e **NÃO** aparecem como staged/untracked para commit.
    - **Em caso de violação:** Rejeição imediata; bloqueie o commit até a correção.
 
 2. **Lei 2 — Sanitização de Entradas, Anti-XSS & Injeção:**

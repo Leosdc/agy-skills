@@ -24,3 +24,7 @@ description: >-
 4. **Minimização de Dados & LGPD**:
    - Colete, armazene e trafegue apenas os dados estritamente necessários à operação.
    - Nunca exponha identificadores confidenciais (UIDs internos, tokens, e-mails privados, IDs de sessão) em telas públicas, logs do navegador ou telemetria externa.
+
+5. **Proteção de Artefatos Internos em Repositórios Públicos**:
+   - Em repositórios públicos (`gh repo view --json isPrivate` == `false` ou indeterminado), NUNCA versione nem envie `specs/`, `specs/checkpoints/` ou `docs/REGISTRY.json` ao Git remoto (salvo opt-in explícito no `AGENTS.md` do projeto).
+   - Mantenha esses artefatos exclusivamente locais, listados no `.gitignore`, evitando exposição pública de arquitetura interna, planejamento e planos de checkpoint.
