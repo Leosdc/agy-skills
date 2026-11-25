@@ -18,8 +18,9 @@ Safely packages, audits, documents, and pushes progress on the active module fol
 ### 1. Plan (Read-Only & Markdown Plan Generation)
 1. Read `.session.json` to identify `activeModule` and `developer`.
 2. Inspect Git state (`git status --short`, `git diff --stat`, current branch).
-3. **Anti-Skip Security Pre-Flight:**
+3. **Anti-Skip Security & Visibility Pre-Flight:**
    - Scan staged/unstaged/untracked files for accidental secrets (`API_KEY`, private keys, tokens, passwords). If any secret is found, **ABORT IMMEDIATELY**.
+   - Check repository visibility (`gh repo view --json isPrivate,visibility` or `.session.json`). If **public** (or unknown, unless opted in via root `AGENTS.md`), confirm `specs/`, `specs/checkpoints/`, and `docs/REGISTRY.json` are in `.gitignore` and **EXCLUDE** them from atomic commits (keeping `.PLAN.md` strictly local).
    - If security-sensitive files (auth, server/API, CSP/headers, database rules) were modified and `/shield` has not yet been executed in this session, pause and present `ask_question`:
      - `(Recommended) Run /shield first for a strict security and compliance audit`
      - `Proceed directly with the /checkpoint plan`
@@ -50,7 +51,7 @@ Request explicit developer approval via `ask_question`:
    git rebase --autostash origin/dev
    ```
 2. Create the GitHub Issue (if not yet open) and post the technical journal comment via `gh issue comment` using `--body-file` (UTF-8 without BOM).
-3. Create the approved atomic Conventional Commits (including `specs/checkpoints/YYYYMMDD_<activeModule>.PLAN.md` in the docs/spec slice).
+3. Create the approved atomic Conventional Commits (including `specs/checkpoints/YYYYMMDD_<activeModule>.PLAN.md` in the docs/spec slice **only in private repositories**; in public repositories, keep `specs/` and `docs/REGISTRY.json` strictly local and gitignored).
 4. Push the branch:
    ```bash
    git push -u origin HEAD

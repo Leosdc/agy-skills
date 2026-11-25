@@ -17,10 +17,11 @@ Enforces non-negotiable security and privacy standards across every code change.
 
 Inspect `git status --short` and `git diff` across all modified and untracked files:
 
-1. **Law 1 — Secrets & Credentials Hygiene:**
+1. **Law 1 — Secrets, Credentials & Repository Visibility Hygiene:**
    - Scan for hardcoded API keys, passwords, private keys, JWTs, OAuth secrets, or connection strings.
    - Verify private backend secrets are NEVER exposed in client bundles or public env prefixes (`VITE_*`, `NEXT_PUBLIC_*`, `REACT_APP_*`).
    - Confirm `.session.json`, `.env`, and `.env.*` (except `.env.example`) are covered by `.gitignore` (`git check-ignore`).
+   - **Public Repository Guard:** Check `gh repo view --json isPrivate,visibility` (or `.session.json`). If the repository is **public** (or visibility is unknown, unless opted in via root `AGENTS.md`), verify via `git check-ignore` that `specs/` and `docs/REGISTRY.json` are ignored and **NOT** staged/untracked for commit.
    - **Action on violation:** Immediate rejection; block commit until remediated.
 
 2. **Law 2 — Input Sanitization, Anti-XSS & Injection Defense:**

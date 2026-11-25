@@ -24,3 +24,7 @@ description: >-
 4. **Privacy & Data Minimization (LGPD / GDPR)**:
    - Collect, store, and transmit only the minimum personal data strictly required for the feature.
    - Never expose sensitive identifiers (internal UIDs, tokens, private emails, session IDs) in public UI, client logs, or third-party telemetry.
+
+5. **Internal Artifacts Protection in Public Repositories**:
+   - In public repositories (`gh repo view --json isPrivate` == `false` or unknown), NEVER commit or push `specs/`, `specs/checkpoints/`, or `docs/REGISTRY.json` to the remote repository (unless explicitly opted in via the project's root `AGENTS.md`).
+   - Keep these SDD artifacts strictly local and listed in `.gitignore` to avoid publicly exposing internal architecture, specs, and checkpoint plans.

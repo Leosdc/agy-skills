@@ -27,7 +27,8 @@ Accepted `<type>` values (adapt to the target repository's layout defined in `AG
 Every engineering specification MUST be saved in the canonical directory:
 👉 **`specs/<name>.SPEC.md`**
 
-> **NEVER** scatter standalone `SPEC.md` files in the project root or isolated subfolders without versioning the primary specification in `specs/`. The `specs/` directory is the unified *Source of Truth* for engineering contracts.
+> **NEVER** scatter standalone `SPEC.md` files in the project root or isolated subfolders without placing the primary specification in `specs/`. The `specs/` directory is the unified *Source of Truth* for engineering contracts.
+> **Public Repositories:** Check `gh repo view --json isPrivate,visibility` (or `repoVisibility` in `.session.json`). If the repository is **public** (or visibility is unknown), `specs/` and `docs/REGISTRY.json` MUST be added to `.gitignore` and kept **strictly local** (never committed to remote Git, unless explicitly opted in via the project's root `AGENTS.md`).
 
 ---
 
